@@ -1,3 +1,6 @@
 ##Environment
 hr_venv/
 
+logs/
+
+src/__pycache__/
