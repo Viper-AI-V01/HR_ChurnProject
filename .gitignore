@@ -4,3 +4,5 @@ hr_venv/
 logs/
 
 src/__pycache__/
+
+Artifacts/
