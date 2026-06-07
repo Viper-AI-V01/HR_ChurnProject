@@ -6,3 +6,6 @@ logs/
 src/__pycache__/
 
 Artifacts/
+
+catboost_info/
+

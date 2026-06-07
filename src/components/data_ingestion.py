@@ -35,7 +35,7 @@ class DataIngestion:
             test_data.to_csv(path_or_buf= self.data_ingestion_path.test_data_path,index = False,header = True)
             logging.info('Train Data and Test Data Successfully Splitted.....')
 
-            return (train_data,test_data)
+            return train_data,test_data
 
         except Exception as e:
             raise HRmodel_Exception(e,sys)
