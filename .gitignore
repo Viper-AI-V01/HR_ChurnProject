@@ -10,3 +10,4 @@ Artifacts/
 catboost_info/
 
 notebook/catboost_info/
+src/pipeline/__pycache__/

@@ -11,8 +11,8 @@ class Predicted:
     def predict(self,data):
         try:
             model = load_obj(path=os.path.join('Artifacts','model.pkl'))
-            preprocessor_obj = load_obj(path=os.path.join('Artifacts','model.pkl'))
-            data_scaled = preprocessor_obj(data)
+            preprocessor_obj = load_obj(path=os.path.join('Artifacts','preprocessing.pkl'))
+            data_scaled = preprocessor_obj.transform(data)
             predicted_= model.predict(data_scaled)
             return predicted_
         except Exception as e:
@@ -43,7 +43,7 @@ class GetData:
                                 'salary':self.salary
                                 }
             logging.info('Data coverted to Pd DataFrame')
-            return pd.DataFrame(predicted_dataFrame)
+            return pd.DataFrame(predicted_dataFrame,index=[0])
         except Exception as e:
             raise HRmodel_Exception(e, sys)
 

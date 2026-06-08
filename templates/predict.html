@@ -2,110 +2,97 @@
 <body>
     <div class="login">
        <h1>HR Churn Model</h1>
+       <hr>
    
        <form action="{{ url_for('predictor')}}" method="post">
-        <h1>
+        <fieldset>
+        
             <legend>HR Churn Prediction</legend>
-        </h1>
+       
         <div class="mb-3">
             <label class="form-label">Satisfation Level</label>
-            <select class="form-control" name="gender" placeholder="Enter you Gender" required>
-                <option class="placeholder" selected disabled value="">Select your Gender</option>
-                <option value="male">
-                    Male
-                </option>
-                <option value="female">
-                    Female
-                </option>
+            <input class="form-control" type="number" name="satisfaction_level"
+            placeholder="Enter the satisfaction level between 0 to 1",min='0' ,max="1" width="200" required>
+        </div>
+        <div class="mb-3">
+           <label class="form-label">Last Evaluation Score</label>
+            <input class="form-control" type="number" name="last_evaluation"
+            placeholder="Enter the Last_eval between 0 to 1",min='0' ,max="1" width="200" required>
+        </div>
+        <div class="mb-3">
+           <label class="form-label">Current working number of projects</label>
+            <input class="form-control" type="number" name="number_project"
+            placeholder="Number of Projects",min='0' ,max="7" width="200" required>
+        </div>
+
+        <div class="mb-3">
+           <label class="form-label">Average Monthly Hours</label>
+            <input class="form-control" type="number" name="average_montly_hours"
+            placeholder="Monthly working hours",min='0' ,max="400" width="200" required>
+        </div>
+
+        <div class="mb-3">
+           <label class="form-label">Time spend in the company</label>
+            <input class="form-control" type="number" name="time_spend_company"
+            placeholder="Number of years",min='0' ,max="10" width="200" required>
+        </div>
+
+        <div class="mb-3">
+           <label class="form-label">Work Accidents</label>
+            <select class="form-control" name="Work_accident"
+            placeholder="Did any work Accidents?" required>
+            <option class="placeholder" selected disabled value="">Yes/No</option>
+             <option value="0">No</option>
+             <option value="1">Yes</option></select>
+        </div>
+
+        <div class="mb-3">
+           <label class="form-label">Promotions in last 5 years</label>
+            <select class="form-control" name="promotion_last_5years"
+            aria-placeholder="Promoted?" required>
+            <option class="placeholder" selected disabled value="">Yes/No</option>
+             <option value="0">No</option>
+             <option value="1">Yes</option></select>
+        </div>
+
+        <div class="mb-3">
+           <label class="form-label">Departments</label>
+            <select class="form-control" name="Departments"
+            placeholder="Enter Department" required>
+            <option class="placeholder" selected disabled value="">Select Department</option>
+
+             <option value="sales">Sales</option>
+             <option value="accounting">Accounting</option>
+             <option value="hr">HR</option>
+             <option value="technical">Technical</option>
+             <option value="support">Support</option>
+             <option value="management">Management</option>
+             <option value="IT">IT</option>
+             <option value="product_mng">Product Manager</option>
+             <option value="marketing">Marketing</option>
+             <option value="RandD">Research and Development</option></select>
+        </div>
+        <div class="mb-3">
+
+            <label class="form-label">Salary</label>
+            <select class="form-control" name="salary" placeholder="Enter Salary Level" required>
+                <option class="placeholder" selected disabled value="">Select Salary level</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+
+
             </select>
         </div>
+        <br>
         <div class="mb-3">
-            <label class="form-label">Race or Ethnicity</label>
-            <select class="form-control" name="ethnicity" placeholder="Enter you ethnicity" required>
-                <option class="placeholder" selected disabled value="">Select Ethnicity</option>
-                <option value="group A">
-                    Group A
-                </option>
-                <option value="group B">
-                    Group B
-                </option>
-                <option value="group C">
-                    Group C
-                </option>
-                <option value="group D">
-                    Group D
-                </option>
-                <option value="group E">
-                    Group E
-                </option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Parental Level of Education</label>
-            <select class="form-control" name="parental_level_of_education"
-                placeholder="Enter you Parent Education" required>
-                <option class="placeholder" selected disabled value="">Select Parent Education</option>
-                <option value="associate's degree">
-                    associate's degree
-                </option>
-                <option value="bachelor's degree">
-                    bachelor's degree
-                </option>
-                <option value="high school">
-                    high school
-                </option>
-                <option value="master's degree">
-                    master's degree
-                </option>
-                <option value="some college">
-                    some college
-                </option>
-                <option value="some high school">
-                    some high school
-                </option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Lunch Type</label>
-            <select class="form-control" name="lunch" placeholder="Enter you Lunch" required>
-                <option class="placeholder" selected disabled value="">Select Lunch Type</option>
-                <option value="free/reduced">
-                    free/reduced
-                </option>
-                <option value="standard">
-                    standard
-                </option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Test preparation Course</label>
-            <select class="form-control" name="test_preparation_course" placeholder="Enter you Course"
-                required>
-                <option class="placeholder" selected disabled value="">Select Test_course</option>
-                <option value="none">
-                    None
-                </option>
-                <option value="completed">
-                    Completed
-                </option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Writing Score out of 100</label>
-            <input class="form-control" type="number" name="reading_score"
-                placeholder="Enter your Reading score" min='0' max='100' />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Reading Score out of 100</label>
-            <input class="form-control" type="number" name="writing_score"
-                placeholder="Enter your Reading Score" min='0' max='100' />
-        </div>
-        <div class="mb-3">
-            <input class="btn btn-primary" type="submit" value="Predict your Maths Score" required />
+            <input class="btn btn-primary" type="submit" value="Predict Churning Yes/No..." required />
         </div>
     </form>
+    </fieldset>
+    <hr>
     <h2>
-       THE  prediction is {{results}}
+       The Person will {{result}} 
     </h2>
    <body>
 </html>

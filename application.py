@@ -25,7 +25,7 @@ def predictor():
         time_spend_company = request.form.get('time_spend_company')
         Work_accident = request.form.get('Work_accident')
         promotion_last_5years=request.form.get('promotion_last_5years')
-        Departments = request.form.get('Departments ')
+        Departments = request.form.get('Departments')
         salary = request.form.get('salary')
         try:
             get_data = predict_pipeline.GetData(
@@ -34,9 +34,16 @@ def predictor():
                 promotion_last_5years=promotion_last_5years,Departments=Departments,salary=salary)
             result = predict.predict(get_data.get_dataFrame())
             logging.info('-------------Prediction Done-----------')
+
         except Exception as e:
             raise HRmodel_Exception(e, sys)
+        if result[0] == 0:
+            result = 'not leave the company'
+        else:
+            result = 'leave the company'
 
 
-        return render_template('predict.html',result = result[0])
-     
+        return render_template('predict.html',result = result)
+    
+if __name__=='__main__':
+    app.run(host='0.0.0.0')
